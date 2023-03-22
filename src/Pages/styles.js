@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
     margin: auto;
@@ -22,12 +22,14 @@ export const Br = styled.div`
 `;
 
 export const Menu = styled.div`
-    height: 100vh;
+    display: block;
     width: 300px;
+    height: 100vh;
     background-color: white;
     position: fixed;
     margin-top: 47px;
-    display: ${props => props.toggleMenu ? 'block' : 'none'};
+    transition: left 0.5s;
+    left: ${props => props.toggleMenu ? -300 : 0}px;
 
     .welcome {
         display: flex;
@@ -78,7 +80,11 @@ export const Menu = styled.div`
     }
 
     @media screen and (min-width: 992px){
-        display: block;
+        left: 0px;
+    }
+    
+    @media screen and (max-width: 992px) {
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
     }
 
     .menubox1:hover, .menubox2:hover {
